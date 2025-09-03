@@ -27,6 +27,9 @@ const Header: React.FC = () => {
               <a href="#cadastro" className="text-gray-600 hover:text-blue-600 transition-colors">
                 Cadastro
               </a>
+              <a href="?admin=true" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Admin
+              </a>
             </nav>
             
             <div className="flex items-center space-x-2 text-blue-600">
