@@ -1,0 +1,31 @@
+{
+  "name": "cuidador-digital-functions",
+  "description": "Firebase Cloud Functions for Cuidador Digital medication reminders",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "npx firebase emulators:start --only functions",
+    "shell": "npx firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "npx firebase deploy --only functions",
+    "logs": "npx firebase functions:log",
+    "emulators": "npx firebase emulators:start"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "firebase-admin": "^13.5.0",
+    "firebase-functions": "^6.4.0",
+    "twilio": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0",
+    "firebase-tools": "^14.15.1"
+  },
+  "private": true
+}
