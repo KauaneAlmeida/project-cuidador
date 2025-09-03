@@ -1,7 +1,6 @@
 // API service for Firebase Cloud Functions communication
 
-// ✅ Agora a base da API vem do .env
-const API_BASE_URL = import.meta.env.VITE_API_URL as string;
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/cuidador-digital/us-central1';
 
 export class ApiService {
   private baseUrl: string;
@@ -77,26 +76,36 @@ export class ApiService {
     }
   }
 
-  // 🔹 Métodos específicos para suas Cloud Functions
+  // Registration and core functionality
   async saveRegistration(formData: any) {
     console.log('🚀 Submitting registration to Firebase Functions...');
     return await this.post('/saveRegistration', formData);
-  }
-
-  async sendManualReminder(data: any) {
-    return await this.post('/sendManualReminder', data);
-  }
-
-  async checkHealth() {
-    return await this.get('/getHealthStatus');
   }
 
   async generateReport(idosoId: string, date: string) {
     return await this.get(`/generateReport?idosoId=${idosoId}&date=${date}`);
   }
 
+  async getHealthStatus() {
+    return await this.get('/getHealthStatus');
+  }
+
   async handleWhatsAppWebhook(data: any) {
     return await this.post('/handleWhatsAppWebhook', data);
+  }
+
+  async testTwilio() {
+    return await this.get('/testTwilio');
+  }
+
+  // Stripe payment methods
+  async createCheckoutSession(plan: "basic" | "family" | "premium", uid: string, email?: string) {
+    return await this.post('/createCheckoutSession', { plan, uid, email });
+  }
+
+  // CSV export for Power BI
+  async generateReportCsv(idosoId: string) {
+    return await this.get(`/generateReportCsv?idosoId=${idosoId}`);
   }
 }
 

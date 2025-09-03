@@ -26,6 +26,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment files
+functions/.env
+*.env*
+!.env.example
+
 # Arquivos de ambiente
 .env
 .env.*
